@@ -1,42 +1,225 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+.app {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 2rem;
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #888;
+  margin: 0 0 2.5rem 0;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.topic-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.topic-input:focus {
+  outline: none;
+  border-color: #646cff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.topic-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.topic-input::placeholder {
+  color: #888;
+}
+
+.generate-btn {
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(100, 108, 255, 0.3);
+}
+
+.generate-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 108, 255, 0.4);
+}
+
+.generate-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.generate-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error {
+  padding: 1rem 1.25rem;
+  background-color: rgba(255, 70, 70, 0.1);
+  border: 1px solid rgba(255, 70, 70, 0.3);
+  border-radius: 12px;
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  animation: slideIn 0.3s ease;
+}
+
+.quote-card {
+  position: relative;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.1) 0%, rgba(83, 91, 242, 0.05) 100%);
+  border: 1px solid rgba(100, 108, 255, 0.2);
+  border-radius: 20px;
+  animation: slideIn 0.4s ease;
+  box-shadow: 0 8px 32px rgba(100, 108, 255, 0.15);
+}
+
+.quote-mark {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(100, 108, 255, 0.3);
+  line-height: 1;
+}
+
+.quote-text {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  font-style: italic;
+}
+
+.quote-author {
+  font-size: 1.1rem;
+  color: #888;
+  text-align: right;
+  margin: 0;
+  font-weight: 500;
+}
+
+.placeholder {
+  padding: 3rem 2rem;
   text-align: center;
+  color: #888;
+  border: 2px dashed rgba(136, 136, 136, 0.3);
+  border-radius: 20px;
+  animation: fadeIn 0.3s ease;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.placeholder p {
+  margin: 0;
+  font-size: 1.1rem;
 }
 
-@keyframes logo-spin {
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-.card {
-  padding: 2em;
+@media (max-width: 768px) {
+  .app {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .topic-input {
+    min-width: 100%;
+  }
+
+  .generate-btn {
+    width: 100%;
+  }
+
+  .quote-card {
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+  }
+
+  .quote-text {
+    font-size: 1.25rem;
+  }
+
+  .quote-author {
+    font-size: 1rem;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+@media (prefers-color-scheme: light) {
+  .topic-input {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .topic-input:focus {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .quote-card {
+    background: linear-gradient(135deg, rgba(100, 108, 255, 0.08) 0%, rgba(83, 91, 242, 0.03) 100%);
+    box-shadow: 0 8px 32px rgba(100, 108, 255, 0.1);
+  }
 }
